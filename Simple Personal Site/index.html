@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Username</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #181717;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+        .particle:nth-child(1) { left: 10%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; width: 4px; height: 4px; animation-duration: 9s; animation-delay: 0.5s; opacity: 0.3; }
+        .particle:nth-child(5) { left: 50%; width: 3px; height: 3px; animation-duration: 6s; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; width: 2px; height: 2px; animation-duration: 11s; animation-delay: 1.5s; }
+        .particle:nth-child(7) { left: 70%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 4s; }
+        .particle:nth-child(8) { left: 80%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 2.5s; }
+        .particle:nth-child(9) { left: 90%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 0.8s; opacity: 0.25; }
+        .particle:nth-child(10) { left: 15%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: 5s; }
+        .particle:nth-child(11) { left: 25%; width: 2px; height: 2px; animation-duration: 6s; animation-delay: 1.2s; }
+        .particle:nth-child(12) { left: 35%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: 3.5s; }
+        .particle:nth-child(13) { left: 45%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: 0.3s; }
+        .particle:nth-child(14) { left: 55%; width: 4px; height: 4px; animation-duration: 7s; animation-delay: 4.5s; opacity: 0.3; }
+        .particle:nth-child(15) { left: 65%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 2s; }
+        .particle:nth-child(16) { left: 75%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: 6s; }
+        .particle:nth-child(17) { left: 85%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 1.8s; }
+        .particle:nth-child(18) { left: 5%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: 3.2s; }
+        .particle:nth-child(19) { left: 95%; width: 4px; height: 4px; animation-duration: 6s; animation-delay: 4.8s; opacity: 0.25; }
+        .particle:nth-child(20) { left: 12%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 0.7s; }
+        .particle:nth-child(21) { left: 22%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 5.5s; }
+        .particle:nth-child(22) { left: 32%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: 2.3s; }
+        .particle:nth-child(23) { left: 42%; width: 2px; height: 2px; animation-duration: 12s; animation-delay: 1s; }
+        .particle:nth-child(24) { left: 52%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 6.5s; opacity: 0.3; }
+        .particle:nth-child(25) { left: 62%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 3.8s; }
+        .particle:nth-child(26) { left: 72%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 0.4s; }
+        .particle:nth-child(27) { left: 82%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 7s; }
+        .particle:nth-child(28) { left: 92%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: 2.7s; }
+        .particle:nth-child(29) { left: 18%; width: 4px; height: 4px; animation-duration: 6s; animation-delay: 4.2s; opacity: 0.25; }
+        .particle:nth-child(30) { left: 28%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 5.8s; }
+
+        @keyframes floatUp {
+            0% { bottom: -10px; opacity: 0; transform: translateX(0) translateY(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { bottom: 100vh; opacity: 0; transform: translateX(20px) translateY(-20px); }
+        }
+        .audio-bg { margin-top: 10px; display: none; }
+        .container {
+            background: rgba(40, 40, 40, 0.62);
+            border-radius: 28px;
+            padding: 48px 32px 36px 32px;
+            max-width: 370px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            border: 2px solid rgba(255,255,255,0.22);
+            transition: box-shadow 0.2s;
+            z-index: 1;
+            box-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.1);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.2),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.3),
+                    0 0 25px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(255, 255, 255, 0.2);
+            }
+        }
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 22px;
+            border: 3.5px solid rgba(255, 255, 255, 0.274);
+            box-shadow: 0 2px 18px 0 rgba(49,49,48,0.22);
+            background: rgba(255,255,255,0.14);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 5rem;
+            font-family: 'DraculitoS_', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(90deg, #fff 0%, #313130 40%, #313130 60%, #fff 100%);
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 2.5s linear infinite;
+            text-align: center;
+            letter-spacing: 0.04em;
+        }
+        @font-face {
+            font-family: 'DraculitoS_';
+            src: url('Assets/DraculitoS_.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: 0% center; }
+        }
+        p {
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 0.01em;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(90deg, #313130 60%, #444 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 13px 0;
+            border-radius: 10px;
+            font-size: 1.13rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            box-shadow: 0 2px 8px 0 rgba(49,49,48,0.10);
+            transition: background 0.22s, transform 0.18s, box-shadow 0.18s;
+        }
+        .links a:hover {
+            background: linear-gradient(90deg, #444 0%, #313130 100%);
+            color: #6d89bd;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 18px 0 rgba(255,255,255,0.18), 0 2px 8px 0 rgba(49,49,48,0.18);
+        }
+        .links svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+        .links a:focus {
+            outline: 2px solid #66baff;
+            outline-offset: 2px;
+        }
+        .spotify-container {
+            margin-bottom: 18px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .spotify-container iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
+        @media (max-width: 500px) {
+            .container { padding: 18px 2vw; }
+            h1 { font-size: 2.1rem; }
+            .avatar { width: 80px; height: 80px; }
+            .particle { animation-duration: 12s; }
+            .particles .particle:nth-child(n+16) { display: none; }
+            .container {
+                box-shadow: 
+                    0 0 8px rgba(255, 255, 255, 0.2),
+                    0 0 15px rgba(255, 255, 255, 0.25),
+                    0 0 25px rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <img src="Assets/avatar.jpg" alt="Avatar" class="avatar" tabindex="0" />
+        <h1>Username</h1>
+        <p></p>
+        
+        <div class="spotify-container">
+            <iframe src="https://open.spotify.com/embed/track/" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+
+           <div class="links">
+            <a href="https://twitter.com/Username" target="_blank" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.59-2.47.7a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6-.7-.02-1.36-.21-1.94-.53v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54c-.36 0-.71-.02-1.06-.06A12.13 12.13 0 0 0 7.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.36-.01-.54A8.18 8.18 0 0 0 24 4.59a8.36 8.36 0 0 1-2.54.7z"/></svg>
+                Twitter
+            </a>
+            <a href="https://github.com/Username" target="_blank" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                GitHub
+            </a>
+            <a href="https://discord.com/users/Username" target="_blank" aria-label="Discord">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 1 0-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 1 0-.077-.01c-.120.042-.238.088-.363.128a.066.066 0 0 0-.034.019c-.26.42-.516.864-.764 1.319a.193.193 0 0 0 .066.24c1.615.763 3.268 1.504 4.92 2.266a.07.07 0 0 0 .032.01c2.684-.283 5.262-1.034 7.806-2.266a.07.07 0 0 0 .034-.01c.260-.42.516-.864.764-1.319a.066.066 0 0 0-.034-.019c-.125-.04-.243-.086-.363-.128a.074.074 0 0 1-.077.01c.12-.042.238-.088.372-.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 1-.041.107c.36.503.772.95 1.226 1.994a.075.075 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                Discord
+            </a>
+        </div>
+    </div>
+</body>
+</html>

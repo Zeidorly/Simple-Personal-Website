@@ -1,0 +1,4 @@
+# Simple Personal Website
+An all-in-one link hub designed to showcase your social media, contacts, and online presence. Easily upload and organize your links in one stylish, customizable page. With your own custom domain and personalized style options, create a unique digital card that makes sharing your links simple.
+# Useful Information
+To customize this website, simply replace all instances of "Username" in the index.html file with your own social media usernames. To add new social media links, copy one of the existing example sections below the "Socials" header, then update the name and URL accordingly. Additionally, you can personalize your assets, such as background images or fonts, by uploading your files with the exact filenames into the assets folder and updating the references in index.html if necessary. This simple process makes customizing your link hub quick, easy, and seamless.
